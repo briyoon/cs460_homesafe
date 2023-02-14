@@ -1,5 +1,6 @@
 from PyQt6 import QtWidgets
 
+
 class KeyPad(QtWidgets.QWidget):
     """
     Custom Qt Widget to show the keypad

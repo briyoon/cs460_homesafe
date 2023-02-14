@@ -3,19 +3,44 @@ from PyQt6 import QtWidgets
 
 import sys
 
-from widgets import KeyPad
+from widgets import Handle, KeyHole, KeyPad
 
-app = QApplication(sys.argv)
 
-window = QMainWindow()
-centralWidget = QWidget()
-layout = QtWidgets.QVBoxLayout()
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow,self).__init__()
 
-keypad = KeyPad()
+        screen = QApplication.primaryScreen()
 
-layout.addWidget(keypad)
-centralWidget.setLayout(layout)
-window.setCentralWidget(centralWidget)
-window.show()
+        screen_width = screen.size().width()
+        screen_height = screen.size().height()
+        app_width = int(screen.size().width() / 1.2)
+        app_height = int(screen.size().height() / 1.2)
 
-app.exec()
+        self.setGeometry((screen_width - app_width) // 2, (screen_height - app_height) // 2, app_width, app_height)
+        self.setWindowTitle("Perfect Safe")
+
+        # layout
+        centralWidget = QWidget()
+        layout = QtWidgets.QHBoxLayout()
+
+        # init widgets
+        self.handle = Handle()
+        self.keyhole = KeyHole()
+        self.keypad = KeyPad()
+
+        # add widgets
+        layout.addWidget(self.handle)
+        layout.addWidget(self.keyhole)
+        layout.addWidget(self.keypad)
+
+        centralWidget.setLayout(layout)
+        self.setCentralWidget(centralWidget)
+        # self.b1.clicked.connect(self.button_clicked)
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    win = MainWindow()
+    win.show()
+    sys.exit(app.exec())

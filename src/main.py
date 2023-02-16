@@ -17,7 +17,12 @@ class MainWindow(QMainWindow):
         app_width = int(screen.size().width() / 1.2)
         app_height = int(screen.size().height() / 1.2)
 
-        self.setGeometry((screen_width - app_width) // 2, (screen_height - app_height) // 2, app_width, app_height)
+        # self.setGeometry(
+        #     (screen_width - app_width) // 2,
+        #     (screen_height - app_height) // 2,
+        #     app_width,
+        #     app_height
+        # )
         self.setWindowTitle("Perfect Safe")
 
         # layout

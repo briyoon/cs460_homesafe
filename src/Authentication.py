@@ -10,5 +10,5 @@ class Authentification():
             if json_object["2-factor"]:
                 pass
             else:
-                if json["passcode"] == code:
+                if json_object["passcode"] == code:
                     return True

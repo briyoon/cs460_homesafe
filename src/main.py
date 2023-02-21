@@ -1,7 +1,9 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
-from PyQt6 import QtWidgets
-
 import sys
+import json
+import os
+
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
 from widgets import Handle, KeyHole, KeyPad
 
@@ -24,6 +26,19 @@ class MainWindow(QMainWindow):
         #     app_height
         # )
         self.setWindowTitle("Perfect Safe")
+
+        # initialize safe_storage.json if needed
+        storage_path = "src/safe_storage.json"
+        if not os.path.isfile(storage_path):
+            with open(storage_path, 'w') as outfile:
+                defaults = {
+                    "passcode": [0,0,0,0],
+                    "2-factor": False,
+                    "volume": 2
+                }
+                json_object = json.dumps(defaults, indent=4)
+                outfile.write(json_object)
+
 
         # layout
         centralWidget = QWidget()

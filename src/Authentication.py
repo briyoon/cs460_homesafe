@@ -12,3 +12,4 @@ class Authentification():
             else:
                 if json_object["passcode"] == code:
                     return True
+                

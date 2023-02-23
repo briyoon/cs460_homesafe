@@ -1,1 +1,0 @@
-from widgets.handle.handle import Handle

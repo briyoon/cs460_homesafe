@@ -60,6 +60,8 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
+    if sys.version_info.major != 3 or sys.version_info.minor < 10:
+        sys.exit("Please use Python version 3.10 or above")
     app = QApplication(sys.argv)
     win = MainWindow()
     win.show()

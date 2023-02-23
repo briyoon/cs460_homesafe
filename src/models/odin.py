@@ -1,6 +1,3 @@
-from controllers import SafeConfig
-
-
 class Odin():
     """
     Singleton object that tracks state for the entire safe

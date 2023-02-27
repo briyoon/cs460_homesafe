@@ -6,6 +6,7 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
 from widgets import Handle, KeyHole, KeyPad
+from models import Odin
 
 
 class MainWindow(QMainWindow):
@@ -27,10 +28,9 @@ class MainWindow(QMainWindow):
         # )
         self.setWindowTitle("Perfect Safe")
 
-        # initialize safe_storage.json if needed
-        storage_path = "resources/settings.json"
-        if not os.path.isfile(storage_path):
-            with open(storage_path, 'w') as outfile:
+        # On first safe run, create settings file
+        if not os.path.isfile(Odin.storage_path):
+            with open(Odin.storage_path, 'w') as outfile:
                 defaults = {
                     "passcode": "1234",
                     "two_factor": False,

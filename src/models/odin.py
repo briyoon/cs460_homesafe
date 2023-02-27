@@ -2,6 +2,7 @@ class Odin():
     """
     Singleton object that tracks state for the entire safe
     """
+    storage_path: str = "resources/settings.json"
     current_code: str = ""
 
     def __new__(cls):

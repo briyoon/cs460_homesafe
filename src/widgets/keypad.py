@@ -35,7 +35,7 @@ class KeyPad(QtWidgets.QWidget):
 
         button = QtWidgets.QPushButton()
         button.setText('#')
-        button.clicked.connect(lambda: keypad_controller.input_char('#'))
+        button.clicked.connect(keypad_controller.enter_code())
         layout.addWidget(button)
         self._buttons.append(button)
 

@@ -6,3 +6,7 @@ def input_char(input: str) -> None:
     if len(Odin.current_code) < 12:
         Odin.current_code += input
     print(Odin.current_code)
+
+def enter_code() -> None:
+    output_controller.play_tone(7, output_controller.sounds.SHORT)
+    main_controller.handle_command(Odin.current_code)

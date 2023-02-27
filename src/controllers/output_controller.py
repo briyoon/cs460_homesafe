@@ -4,8 +4,7 @@ import playsound
 
 
 class sounds(Enum):
-    # SHORT = "resources/shortbeep.mp3"
-    SHORT = "./resources/shortbeep.mp3"
+    SHORT = "resources/shortbeep.wav"
     LONG = "resources/longbeep.wav"
 
 class colors(Enum):
@@ -13,7 +12,7 @@ class colors(Enum):
 
 def play_tone(volume: int, tone: sounds) -> bool:
     try:
-        playsound.playsound(tone)
+        playsound.playsound(tone.value, False)
         return True
     except:
         print("failed to play sound")

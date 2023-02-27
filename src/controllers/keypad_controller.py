@@ -2,6 +2,13 @@ from models import Odin
 from controllers import main_controller, output_controller
 
 def input_char(input: str) -> None:
+    """
+    Receives user key presses returning each character individually to the main
+    processor.
+
+    Args:
+        input (str): _description_
+    """
     output_controller.play_tone(7, output_controller.sounds.SHORT)
     if len(Odin.current_code) < 12:
         Odin.current_code += input

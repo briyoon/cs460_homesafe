@@ -30,9 +30,9 @@ def play_tone(tone: sounds) -> bool:
         volume = storage_controller.read_file(storage_controller.Settings.VOLUME)
         match volume:
             case 2:
-                volume = 10
+                volume = 1
             case 1:
-                volume = 5
+                volume = 0.5
             case 0:
                 volume = 0
             case _:

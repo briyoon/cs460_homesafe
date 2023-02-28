@@ -1,8 +1,6 @@
 import sys
 import json
 import os
-import asyncio
-from qasync import QEventLoop
 
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget

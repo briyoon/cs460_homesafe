@@ -1,6 +1,4 @@
-import os
 from enum import Enum
-import playsound
 from pygame import mixer
 
 import threading

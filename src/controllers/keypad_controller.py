@@ -26,7 +26,7 @@ def enter_code() -> None:
     else:
         if authentification_controller.authenticate(code):
             print("OPEN!!!!")
-            Odin.thors_handle.toggle_door_state()
+            Odin.thors_handle.open_door()
             locking_mechanism_controller.open_safe()
 
 def command_access():

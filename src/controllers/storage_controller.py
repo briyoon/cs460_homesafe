@@ -1,5 +1,6 @@
 from enum import Enum
 import json
+import traceback
 
 from models import Odin
 
@@ -24,10 +25,10 @@ def read_file(setting: Settings) -> str | int | Exception:
     """
     try:
         with open(Odin.storage_path, "r") as f:
-            settings_file = json.loads(f)
+            settings_file = json.load(f)
             return settings_file[setting.value]
     except:
-        print(Exception)
+        print("error reading reading json")
         return Exception
 
 def write_file(setting: Settings, new_value: str) -> bool:
@@ -50,5 +51,5 @@ def write_file(setting: Settings, new_value: str) -> bool:
             f.write(settings_file)
         return True
     except:
-        print(Exception)
+        print("error writing reading json")
         return False

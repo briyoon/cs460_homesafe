@@ -1,3 +1,6 @@
 import controllers.keypad_controller
 import controllers.output_controller
 import controllers.main_controller
+import controllers.authentification_controller
+import controllers.locking_mechanism_controller
+import controllers.storage_controller

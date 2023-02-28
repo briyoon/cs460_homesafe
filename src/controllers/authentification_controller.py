@@ -1,6 +1,6 @@
 from models import Odin
 
-import storage_controller
+from controllers import storage_controller
 
 def authenticate(code: str) -> bool:
     """

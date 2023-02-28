@@ -1,5 +1,7 @@
 from enum import Enum
 
+# from widgets import handle
+
 
 class Odin():
     """
@@ -18,6 +20,7 @@ class Odin():
     door_open: bool = False
     keypad_state: KeypadState = KeypadState.IDLE
     command: str = ""
+    thors_handle = None
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):

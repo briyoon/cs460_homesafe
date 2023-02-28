@@ -61,6 +61,7 @@ class MainWindow(QMainWindow):
             self.setStyleSheet(f.read())
 
         mixer.init()
+        Odin.thors_handle = self.handle
 
 
 if __name__ == "__main__":

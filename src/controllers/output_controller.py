@@ -3,6 +3,9 @@ from enum import Enum
 import playsound
 from pygame import mixer
 
+import threading
+
+from models import Odin
 from controllers import storage_controller
 
 
@@ -46,7 +49,7 @@ def play_tone(tone: sounds) -> bool:
         print("failed to play sound")
         return False
 
-def led_feedback(length: int, color: colors) -> bool:
+def led_feedback(length: int, color: str) -> bool:
     """
     Receives a signal from the output controller determining the color of LED
     that should be lit and for how long.  Returns a boolean that the signal was
@@ -59,7 +62,10 @@ def led_feedback(length: int, color: colors) -> bool:
     Returns:
         bool: _description_
     """
+
     try:
+        thread = threading.Thread(target=Odin.keypad.blink, args=(color, length))
+        thread.start()
         return True
     except:
         return False

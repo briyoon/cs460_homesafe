@@ -6,7 +6,7 @@ from models import Odin
 
 
 class Settings(Enum):
-    PASSWORD = "password"
+    PASSWORD = "passcode"
     TWO_FACTOR = "two_factor"
     VOLUME = "volume"
 
@@ -28,6 +28,7 @@ def read_file(setting: Settings) -> str | int | Exception:
             settings_file = json.load(f)
             return settings_file[setting.value]
     except:
+        traceback.print_exc()
         print("error reading reading json")
         return Exception
 
@@ -45,11 +46,13 @@ def write_file(setting:Settings, new_value:str|int|bool) -> bool:
         bool: _description_
     """
     try:
-        with open(Odin.storage_path, "rw") as f:
-            settings_file = json.loads(f)
-            settings_file[setting.value] = new_value
-            f.write(settings_file)
+        with open(Odin.storage_path, "r") as f:
+            settings_file = json.load(f)
+        settings_file[setting.value] = new_value
+        with open(Odin.storage_path, "w") as f:
+            json.dump(settings_file, f)
         return True
     except:
+        traceback.print_exc()
         print("error writing reading json")
         return False

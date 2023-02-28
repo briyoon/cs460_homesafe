@@ -17,15 +17,15 @@ class MainWindow(QMainWindow):
 
         screen_width = screen.size().width()
         screen_height = screen.size().height()
-        app_width = int(screen.size().width() / 1.2)
-        app_height = int(screen.size().height() / 1.2)
+        app_width = int(screen.size().width() / 1.5)
+        app_height = int(screen.size().height() / 1.5)
 
-        # self.setGeometry(
-        #     (screen_width - app_width) // 2,
-        #     (screen_height - app_height) // 2,
-        #     app_width,
-        #     app_height
-        # )
+        self.setGeometry(
+            (screen_width - app_width) // 2,
+            (screen_height - app_height) // 2,
+            app_width,
+            app_height
+        )
         self.setWindowTitle("Perfect Safe")
 
         # On first safe run, create settings file
@@ -47,6 +47,7 @@ class MainWindow(QMainWindow):
         self.handle = Handle()
         self.keyhole = KeyHole()
         self.keypad = KeyPad()
+        self.keypad.setFixedSize(400, 300)
 
         # add widgets
         layout.addWidget(self.handle)
@@ -55,6 +56,8 @@ class MainWindow(QMainWindow):
 
         centralWidget.setLayout(layout)
         self.setCentralWidget(centralWidget)
+        with open("./src/main.css") as f:
+            self.setStyleSheet(f.read())
 
 
 if __name__ == "__main__":

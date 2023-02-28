@@ -1,0 +1,14 @@
+QWidget {
+    background-color: rgb(50, 50, 50);
+    margin: 50px;
+}
+
+/* QFrame {
+    border: 5px solid pink;
+} */
+
+QPushButton {
+    background-color: grey;
+    border: none;
+    border-radius: 5px;
+}

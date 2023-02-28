@@ -56,7 +56,6 @@ def led_feedback(length: int, color: colors) -> bool:
         bool: _description_
     """
     try:
-        # playsound.playsound("resources/shortbeep.wav")
         return True
     except:
         return False

@@ -2,7 +2,7 @@ from PyQt6 import QtWidgets
 from controllers import keypad_controller
 from models import Odin
 
-class KeyPad(QtWidgets.QWidget):
+class KeyPad(QtWidgets.QFrame):
     """
     Custom Qt Widget to show the keypad
     """
@@ -41,6 +41,9 @@ class KeyPad(QtWidgets.QWidget):
         self._buttons.append(button)
 
         self.setLayout(layout)
+
+        with open("./src/widgets/keypad.css") as f:
+            self.setStyleSheet(f.read())
 
     def pound_it(self) -> None:
         state = Odin.keypad_state

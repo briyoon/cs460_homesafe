@@ -28,7 +28,8 @@ def read_file(setting: Settings) -> str | int | Exception:
             settings_file = json.load(f)
             return settings_file[setting.value]
     except:
-        print("error reading reading json")
+        traceback.print_exc()
+        print("error reading json")
         return Exception
 
 def write_file(setting:Settings, new_value:str|int|bool) -> bool:
@@ -46,10 +47,11 @@ def write_file(setting:Settings, new_value:str|int|bool) -> bool:
     """
     try:
         with open(Odin.storage_path, "rw") as f:
-            settings_file = json.loads(f)
+            settings_file = json.load(f)
             settings_file[setting.value] = new_value
             f.write(settings_file)
         return True
     except:
-        print("error writing reading json")
+        traceback.print_exc()
+        print("error writing json")
         return False

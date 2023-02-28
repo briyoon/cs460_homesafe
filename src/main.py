@@ -1,6 +1,8 @@
 import sys
 import json
 import os
+import asyncio
+from qasync import QEventLoop
 
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
@@ -48,7 +50,7 @@ class MainWindow(QMainWindow):
         self.handle = Handle()
         self.keyhole = KeyHole()
         self.keypad = KeyPad()
-        self.keypad.setFixedSize(400, 300)
+        self.keypad.setFixedSize(400, 400)
 
         # add widgets
         layout.addWidget(self.handle)
@@ -68,6 +70,12 @@ if __name__ == "__main__":
     if sys.version_info.major != 3 or sys.version_info.minor < 10:
         sys.exit("Please use Python version 3.10 or above")
     app = QApplication(sys.argv)
+    loop = QEventLoop(app)
+    asyncio.set_event_loop(loop)
     win = MainWindow()
     win.show()
+
+    with loop:
+        loop.run_forever()
+
     sys.exit(app.exec())

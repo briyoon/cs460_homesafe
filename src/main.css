@@ -8,7 +8,7 @@ QWidget {
 } */
 
 QPushButton {
-    background-color: grey;
+    background-color: rgb(99, 99, 99);
     border: none;
     border-radius: 5px;
 }

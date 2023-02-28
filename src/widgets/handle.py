@@ -12,8 +12,8 @@ class Handle(QtWidgets.QPushButton):
         self.setIcon(QtGui.QIcon("resources/handle_closed.png"))
         self.clicked.connect(self.close_door)
 
-        self.setFixedSize(200, 200)
-        self.setIconSize(QtCore.QSize(100, 100))
+        self.setFixedSize(400, 400)
+        self.setIconSize(QtCore.QSize(200, 200))
 
         with open("./src/widgets/handle.css") as f:
             self.setStyleSheet(f.read())

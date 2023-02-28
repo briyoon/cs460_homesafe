@@ -2,6 +2,8 @@ import os
 from enum import Enum
 import playsound
 
+from controllers import storage_controller
+
 
 class sounds(Enum):
     SHORT = "resources/shortbeep.wav"
@@ -10,7 +12,7 @@ class sounds(Enum):
 class colors(Enum):
     RED = "RED"
 
-def play_tone(volume: int, tone: sounds) -> bool:
+def play_tone(tone: sounds) -> bool:
     """
     Receives a signal from the output controller determining the volume at which
     the buzzer should tone and for how long.  Returns a boolean that the signal
@@ -24,6 +26,16 @@ def play_tone(volume: int, tone: sounds) -> bool:
         bool: _description_
     """
     try:
+        volume = storage_controller.read_file(storage_controller.Settings.VOLUME)
+        match volume:
+            case 2:
+                volume = 10
+            case 1:
+                volume = 5
+            case 0:
+                volume = 0
+            case _:
+                print("err")
         playsound.playsound(tone.value, False)
         return True
     except:

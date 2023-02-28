@@ -1,5 +1,6 @@
 from models import Odin
-from controllers import main_controller, output_controller, storage_controller
+from controllers import main_controller, output_controller, storage_controller, \
+    authentification_controller, locking_mechanism_controller
 
 def input_char(input: str) -> None:
     """
@@ -15,5 +16,16 @@ def input_char(input: str) -> None:
     print(Odin.current_code)
 
 def enter_code() -> None:
+    code = Odin.current_code
+    Odin.current_code = ""
+
     output_controller.play_tone(output_controller.sounds.SHORT)
-    main_controller.handle_command(Odin.current_code)
+    if code[0] == '*':
+        main_controller.handle_command(code)
+    else:
+        if(authentification_controller.authenticate(code)):
+            # locking_mechanism_controller.open_safe() # open safe
+            pass
+        else:
+            # error beep
+            ...

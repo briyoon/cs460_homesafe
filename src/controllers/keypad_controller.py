@@ -9,7 +9,7 @@ def input_char(input: str) -> None:
     Args:
         input (str): _description_
     """
-    output_controller.play_tone(7, output_controller.sounds.SHORT)
+    output_controller.play_tone(output_controller.sounds.SHORT)
     if len(Odin.current_code) < 12:
         Odin.current_code += input
     print(Odin.current_code)

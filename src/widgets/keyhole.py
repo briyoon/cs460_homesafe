@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets, QtGui
-import os
+from models import Odin
 
 
 class KeyHole(QtWidgets.QPushButton):
@@ -15,7 +15,7 @@ class KeyHole(QtWidgets.QPushButton):
         self.clicked.connect(self.toggle_keystate)
 
     def toggle_keystate(self):
-        self.keystate = not self.keystate
+        Odin.key_state = not Odin.key_state
         icon_path = "key_inserted" if self.keystate else "key_empty"
         icon_path = "resources/" + icon_path + ".png"
         print(icon_path)

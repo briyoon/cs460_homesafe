@@ -71,12 +71,7 @@ if __name__ == "__main__":
     if sys.version_info.major != 3 or sys.version_info.minor < 10:
         sys.exit("Please use Python version 3.10 or above")
     app = QApplication(sys.argv)
-    loop = QEventLoop(app)
-    asyncio.set_event_loop(loop)
     win = MainWindow()
     win.show()
-
-    with loop:
-        loop.run_forever()
 
     sys.exit(app.exec())

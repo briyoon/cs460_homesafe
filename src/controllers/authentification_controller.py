@@ -14,7 +14,8 @@ def authenticate(code: str) -> bool:
     Returns:
         bool: _description_
     """
-    stored = storage_controller.read_file(storage_controller.Settings.TWO_FACTOR)
+    stored = storage_controller.read_file(storage_controller.Settings.PASSWORD)
+    print(stored)
     if storage_controller.read_file(storage_controller.Settings.TWO_FACTOR):
         if get_key_state() and (code == stored):
             return True

@@ -56,4 +56,5 @@ class KeyPad(QtWidgets.QFrame):
         if state == Odin.KeypadState.CONFIRM_NEW_PASS:
             keypad_controller.confirm_new_pass()
         Odin.current_code = ""
+        print(Odin.keypad_state)
 

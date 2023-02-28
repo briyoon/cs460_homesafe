@@ -35,3 +35,4 @@ def handle_command(command: str):
             Odin.keypad_state = Odin.KeypadState.ENTER_NEW_PASS
         case _: # deafult (invalid)
             print("Invalid command")
+            Odin.keypad_state = Odin.KeypadState.IDLE

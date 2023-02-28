@@ -18,8 +18,6 @@ def input_char(input: str) -> None:
 def enter_code() -> None:
     code = Odin.current_code
     Odin.current_code = ""
-    print(f"Keystate: {Odin.key_state}")
-    print(f"You entered: {code}")
     output_controller.play_tone(output_controller.sounds.SHORT)
 
     if len(code) > 0 and code[0] == '*':
@@ -27,21 +25,27 @@ def enter_code() -> None:
         Odin.keypad_state = Odin.KeypadState.PASSCODE_REQUEST
     else:
         if authentification_controller.authenticate(code):
-            print("open!!!!")
+            print("OPEN!!!!")
             locking_mechanism_controller.open_safe()
 
 def command_access():
     if authentification_controller.authenticate(Odin.current_code):
         main_controller.handle_command(Odin.command)
+        print("Command applied")
 
 def new_pass():
     if not Odin.current_code[0] == "*":
         Odin.keypad_state = Odin.KeypadState.CONFIRM_NEW_PASS
         Odin.command = Odin.current_code
+        print("New Passcode Valid")
     else:
         Odin.keypad_state = Odin.KeypadState.IDLE
+        print("Invalid Passcode")
 
 def confirm_new_pass():
     if Odin.current_code == Odin.command:
         storage_controller.write_file(storage_controller.Settings.PASSWORD, Odin.current_code)
+        print("Passcode Changed")
+    else:
+        print("NP CHANGE")
     Odin.keypad_state = Odin.KeypadState.IDLE

@@ -1,6 +1,7 @@
 import os
 from enum import Enum
 import playsound
+from pygame import mixer
 
 from controllers import storage_controller
 
@@ -36,7 +37,10 @@ def play_tone(tone: sounds) -> bool:
                 volume = 0
             case _:
                 print("err")
-        playsound.playsound(tone.value, False)
+        mixer.music.load(tone.value)
+        mixer.music.set_volume(volume)
+        mixer.music.play()
+        # playsound.playsound(tone.value, False)
         return True
     except:
         print("failed to play sound")

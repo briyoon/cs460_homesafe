@@ -4,6 +4,7 @@ import os
 
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
+from pygame import mixer
 
 from widgets import Handle, KeyHole, KeyPad
 from models import Odin
@@ -58,6 +59,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(centralWidget)
         with open("./src/main.css") as f:
             self.setStyleSheet(f.read())
+
+        mixer.init()
 
 
 if __name__ == "__main__":

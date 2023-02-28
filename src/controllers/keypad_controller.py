@@ -1,5 +1,5 @@
 from models import Odin
-from controllers import main_controller, output_controller
+from controllers import main_controller, output_controller, storage_controller
 
 def input_char(input: str) -> None:
     """
@@ -15,5 +15,5 @@ def input_char(input: str) -> None:
     print(Odin.current_code)
 
 def enter_code() -> None:
-    output_controller.play_tone(7, output_controller.sounds.SHORT)
+    output_controller.play_tone(output_controller.sounds.SHORT)
     main_controller.handle_command(Odin.current_code)

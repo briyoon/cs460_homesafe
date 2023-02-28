@@ -20,12 +20,11 @@ def enter_code() -> None:
     Odin.current_code = ""
 
     output_controller.play_tone(output_controller.sounds.SHORT)
-    if code[0] == '*':
-        main_controller.handle_command(code)
-    else:
-        if(authentification_controller.authenticate(code)):
-            # locking_mechanism_controller.open_safe() # open safe
-            pass
+    if(authentification_controller.authenticate(code)):
+        if code[0] == '*':
+            main_controller.handle_command(code)
         else:
-            # error beep
-            ...
+            locking_mechanism_controller.open_safe() # open safe
+    else:
+        # error beep
+        ...

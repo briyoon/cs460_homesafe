@@ -31,7 +31,7 @@ def read_file(setting: Settings) -> str | int | Exception:
         print("error reading reading json")
         return Exception
 
-def write_file(setting: Settings, new_value: str) -> bool:
+def write_file(setting:Settings, new_value:str|int|bool) -> bool:
     """
     Receives a string from the storage setting controller as to which setting
     needs to be changed and the new value to replace the setting with.

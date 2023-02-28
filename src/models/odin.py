@@ -5,6 +5,7 @@ class Odin():
     storage_path: str = "resources/settings.json"
     current_code: str = ""
     key_state: bool = False
+    door_open: bool = False
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):

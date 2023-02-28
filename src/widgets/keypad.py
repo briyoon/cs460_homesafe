@@ -1,5 +1,6 @@
 from PyQt6 import QtWidgets
 from controllers import keypad_controller
+from models import Odin
 
 class KeyPad(QtWidgets.QWidget):
     """
@@ -35,8 +36,21 @@ class KeyPad(QtWidgets.QWidget):
 
         button = QtWidgets.QPushButton()
         button.setText('#')
-        button.clicked.connect(keypad_controller.enter_code)
+        button.clicked.connect(self.pound_it)
         layout.addWidget(button)
         self._buttons.append(button)
 
         self.setLayout(layout)
+
+    def pound_it(self) -> None:
+        state = Odin.keypad_state
+        if state == Odin.KeypadState.IDLE:
+            keypad_controller.enter_code()
+        if state == Odin.KeypadState.PASSCODE_REQUEST:
+            keypad_controller.command_access()
+        if state == Odin.KeypadState.ENTER_NEW_PASS:
+            keypad_controller.new_pass()
+        if state == Odin.KeypadState.CONFIRM_NEW_PASS:
+            keypad_controller.confirm_new_pass()
+        Odin.current_code = ""
+

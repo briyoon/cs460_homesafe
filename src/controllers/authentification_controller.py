@@ -2,7 +2,7 @@ from models import Odin
 
 import storage_controller
 
-def authenticate(code: list) -> bool:
+def authenticate(code: str) -> bool:
     """
     Receives the inputed user code and validates it based on user settings
     retrieved from long term memory.  Then returns a boolean based on
@@ -14,10 +14,15 @@ def authenticate(code: list) -> bool:
     Returns:
         bool: _description_
     """
+    stored = storage_controller.read_file(storage_controller.Settings.TWO_FACTOR)
     if storage_controller.read_file(storage_controller.Settings.TWO_FACTOR):
-        pass
+        if get_key_state() and (code == stored):
+            return True
     else:
-        pass
+        if (code == "" and get_key_state()) or (code == stored):
+            return True
+    return False
+
 
 def get_key_state() -> bool:
     """when called, the getKeyState procedure uses data from the key sensor

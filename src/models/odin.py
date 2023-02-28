@@ -21,6 +21,8 @@ class Odin():
     keypad_state: KeypadState = KeypadState.IDLE
     command: str = ""
     thors_handle = None
+    keypad = None
+
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):

@@ -64,6 +64,7 @@ class MainWindow(QMainWindow):
 
         mixer.init()
         Odin.thors_handle = self.handle
+        Odin.keypad = self.keypad
 
 
 if __name__ == "__main__":

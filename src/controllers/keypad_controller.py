@@ -18,13 +18,17 @@ def input_char(input: str) -> None:
 def enter_code() -> None:
     code = Odin.current_code
     Odin.current_code = ""
-
+    print(Odin.key_state)
     output_controller.play_tone(output_controller.sounds.SHORT)
-    if(authentification_controller.authenticate(code)):
-        if code[0] == '*':
-            main_controller.handle_command(code)
-        else:
-            locking_mechanism_controller.open_safe() # open safe
+
+    if len(code) > 0 and code[0] == '*':
+        command = code
+        passcode = request_code()
+        if authentification_controller.authenticate(passcode):
+            main_controller.handle_command(command)
     else:
-        # error beep
-        ...
+        if authentification_controller.authenticate(code):
+            locking_mechanism_controller.open_safe()
+
+def request_code():
+    ...

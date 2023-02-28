@@ -24,8 +24,7 @@ def enter_code() -> None:
         if code[0] == '*':
             main_controller.handle_command(code)
         else:
-            # locking_mechanism_controller.open_safe() # open safe
-            pass
+            locking_mechanism_controller.open_safe() # open safe
     else:
         # error beep
         ...
